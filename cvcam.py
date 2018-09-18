@@ -1,6 +1,6 @@
 import cv2
 import time
-
+import numpy as np
 
 class CvCam(object):
     def __init__(self, iCam=0):
@@ -18,7 +18,11 @@ class CvCam(object):
     def run_threaded(self):
         # if threaded = True
         # this function is run instead of run
-        return self.frame
+
+        # You can modify the image frame like any other np array
+        out = self.frame[:][200:600]
+        out_R = out[:,:,0]
+        return out_R
 
     def run(self):
         self.poll()
